@@ -73,16 +73,12 @@
 			var myApp = angular.module('myApp',[]);
 			myApp.controller('mainCtrl',function($scope){
 				$scope.arts  = [];
-				for (var i = 0; i < 12; i++) {
+				for (var i = 0; i < 15; i++) {
 					var id = i.toString();
 					id = id.padStart(3, "0");
-					id = "http://18.216.41.198:3000/images/" + id + ".png";
+					id = "comic/" + id + ".png";
 					$scope.arts.push(id);
 				}
-				//pages not on the main website yet, because i havne't touched that website in a while :V
-				$scope.arts.push("https://orig00.deviantart.net/2fec/f/2018/172/d/8/kurukkoo__page_012_by_kadew_c-dcf2ta2.png");
-				$scope.arts.push("https://cdn.discordapp.com/attachments/457290678305685525/503277930278027274/013.png");
-				$scope.arts.push("https://cdn.discordapp.com/attachments/457290678305685525/503277931158700033/014.png");
 			}); 
 
 		</script>
