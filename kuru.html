@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Angular Creative Project</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Architects Daughter' rel='stylesheet'>
+	<style type="text/css">
+	body {
+		background-color: #dcdcdc;
+		font-family: 'Architects Daughter';
+		font-size: 22px;
+	}
+	img {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	div.flex-container {
+		display: flex;
+		justify-content: center;
+	}
+	div {
+		display: block;
+	}
+	div.side {
+		flex-basis: 25%; 
+		align-content: center;
+	}
+	div.center {
+		flex-grow: 1;
+		flex-shrink: 0;
+		flex-basis: 50%;
+		text-align: center;
+	}
+	.panel {
+		background-color: #f8f8f8;
+		border-style: solid;
+		border-width: 4px;
+		padding: 0em 1em;
+
+	</style>
+</head>
+<body>
+	<div class="flex-container" ng-app="myApp">
+		<div class="side">
+			<div class="panel">
+				<p>This is a comic I've been working on slowly over a couple of years. It follows the story of a playthrough of Pokemon Red Version I did a while back, under "Nuzlocke" rules.</p>
+				<p>Nuzlocke rules are as follows:</p>
+				<ol>
+					<li>Only capture the first pokemon encountered on a given route</li>
+					<li>If a pokemon of yours faints in battle, it is considered dead and must be released.</li>
+				</ol>
+			</div class="panel">
+		</div>
+
+		<div class="center" ng-controller="mainCtrl">
+			<img src="http://18.216.41.198:3000/images/title.png">
+			<div ng-repeat="page in arts ">
+				<img ng-src="{{ page }}" />
+			</div>
+			<p>And that's how far I've drawn :V</p>
+		</div>
+
+		<div class="side">
+			<div class="panel">
+				<p>I made another site for the comic a while back, but I wanted to test this with Angular as a means of displaying every page in once long continuous scroll, since Angular's ng-repeat method is good for going through lists like that quickly. And so, I made this for the creative project.</p>
+				<p>Fun fact: the title, "Kurukkoo!" is the sound pidgey make in the game.</p>
+			</div>
+		</div>
+
+		<script>
+			var myApp = angular.module('myApp',[]);
+			myApp.controller('mainCtrl',function($scope){
+				$scope.arts  = [];
+				for (var i = 0; i < 12; i++) {
+					var id = i.toString();
+					id = id.padStart(3, "0");
+					id = "http://18.216.41.198:3000/images/" + id + ".png";
+					$scope.arts.push(id);
+				}
+				//pages not on the main website yet, because i havne't touched that website in a while :V
+				$scope.arts.push("https://orig00.deviantart.net/2fec/f/2018/172/d/8/kurukkoo__page_012_by_kadew_c-dcf2ta2.png");
+				$scope.arts.push("https://cdn.discordapp.com/attachments/457290678305685525/503277930278027274/013.png");
+				$scope.arts.push("https://cdn.discordapp.com/attachments/457290678305685525/503277931158700033/014.png");
+			}); 
+
+		</script>
+	</body>
+	</html>
